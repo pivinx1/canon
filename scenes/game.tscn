@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7pdo7r01v0vm"]
+
+[ext_resource type="Texture2D" uid="uid://8xvo1wyc50l6" path="res://textures/sanctifiers_logo.png" id="1_ax7cx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4n43j"]
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4d0o"]
+bg_color = Color(0, 0.259716, 0.472526, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpugh"]
+font_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_qub5h"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_axud6"]
+font_size = 10
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SectorMapBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 28.0
+offset_right = 1151.0
+offset_bottom = 221.0
+
+[node name="TextureRect" type="TextureRect" parent="SectorMapBox"]
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 20.0
+offset_right = 246.0
+offset_bottom = 193.0
+texture = ExtResource("1_ax7cx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SectorMapBox"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 242.0
+offset_bottom = 19.0
+text = "Server Map"
+label_settings = SubResource("LabelSettings_4n43j")
+vertical_alignment = 1
+
+[node name="Toolbar" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 25.0
+
+[node name="OperandUsage" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 165.0
+offset_bottom = 58.0
+
+[node name="ProgressBar" type="ProgressBar" parent="OperandUsage"]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 165.0
+offset_bottom = 30.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_r4d0o")
+value = 50.0
+show_percentage = false
+
+[node name="Usage" type="Label" parent="OperandUsage"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 15.0
+offset_right = 161.0
+offset_bottom = 30.0
+text = "25/50 Operands
+"
+label_settings = SubResource("LabelSettings_jpugh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="OperandUsage"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 77.0
+offset_bottom = 15.0
+text = "Operand Usage"
+label_settings = SubResource("LabelSettings_qub5h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 165.0
+offset_bottom = 474.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 77.0
+offset_bottom = 16.0
+text = "RAM Viewer"
+label_settings = SubResource("LabelSettings_qub5h")
+
+[node name="RAMFree" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 1.0
+offset_right = 163.0
+offset_bottom = 16.0
+text = "768 MqB free"
+label_settings = SubResource("LabelSettings_axud6")
+horizontal_alignment = 2
+vertical_alignment = 1
