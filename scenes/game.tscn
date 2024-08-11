@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7pdo7r01v0vm"]
+[gd_scene load_steps=18 format=3 uid="uid://c7pdo7r01v0vm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_2eukn"]
 [ext_resource type="Texture2D" uid="uid://8xvo1wyc50l6" path="res://textures/sanctifiers_logo.png" id="1_ax7cx"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://scripts/Toolbar.gd" id="3_ywqmx"]
 [ext_resource type="Texture2D" uid="uid://b2l51tjioeu4t" path="res://textures/UIComponents/Cross.png" id="4_5bj53"]
 [ext_resource type="Texture2D" uid="uid://bh8bwrs4my671" path="res://textures/UIComponents/Terminal.png" id="6_21hy4"]
+[ext_resource type="Texture2D" uid="uid://c3vo4yxu82w3a" path="res://textures/UIComponents/Mail.png" id="6_sh76b"]
 [ext_resource type="Script" path="res://MonitorView.gd" id="7_jqy2d"]
+[ext_resource type="Texture2D" uid="uid://cmopjbn4eaaa" path="res://textures/UIComponents/ConnectionComputer.png" id="8_c3f8j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n43j"]
 font_size = 8
@@ -91,19 +93,32 @@ stretch_mode = 5
 
 [node name="OpenMailView" type="TextureButton" parent="Toolbar"]
 layout_mode = 0
-offset_left = 1124.0
+offset_left = 1115.0
 offset_right = 1149.0
 offset_bottom = 25.0
+tooltip_text = "Opens your mailbox."
+texture_normal = ExtResource("6_sh76b")
+stretch_mode = 5
 
 [node name="OpenTerminal" type="TextureButton" parent="Toolbar"]
 layout_mode = 0
-offset_left = 1090.0
-offset_right = 1115.0
+offset_left = 1089.0
+offset_right = 1114.0
 offset_bottom = 25.0
 tooltip_text = "Opens the terminal."
 texture_normal = ExtResource("6_21hy4")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ConnectionView" type="TextureButton" parent="Toolbar"]
+layout_mode = 0
+offset_left = 1056.0
+offset_right = 1089.0
+offset_bottom = 25.0
+tooltip_text = "View your current connection."
+texture_normal = ExtResource("8_c3f8j")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="OperandUsage" type="Panel" parent="."]
 layout_mode = 0
