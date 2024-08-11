@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0mpgb5epdl6q"]
+
+[ext_resource type="Script" path="res://scripts/terminal/terminal.gd" id="1_bxis3"]
+
+[node name="Terminal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -421.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxis3")
+
+[node name="EntryField" type="TextEdit" parent="."]
+layout_mode = 0
+offset_top = 612.0
+offset_right = 1151.0
+offset_bottom = 647.0
+placeholder_text = "Enter a command..."
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+caret_type = 1
+caret_blink = true
+caret_mid_grapheme = true
+
+[node name="Echo" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 612.0
+editable = false
+wrap_mode = 1
