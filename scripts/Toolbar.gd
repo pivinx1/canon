@@ -10,3 +10,5 @@ func _ready():
 
 func _on_exit_game_pressed():
 	get_tree().quit()
+	
+	
