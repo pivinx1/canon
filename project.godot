@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="canon"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+globaldata="*res://autoLoads/globaldata.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [rendering]
 
