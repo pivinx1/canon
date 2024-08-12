@@ -4,17 +4,32 @@ var rng = RandomNumberGenerator.new()
 
 var currentSector: String = "reversetower"
 
-
-
-const musicDict: Dictionary = {
-	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
-	"firstmission": "res://sounds/bgm/ForensicLab.ogg",
+var emailDict = {
+	"test": {
+		"sender": "Eosphorous",
+		"subject": "Test message",
+		"content": "Good day,\n This is a test message.\n You may disregard it.",
+		"attachments": {},
+		"isRead": false
+	},
+	"anothertest": {
+		"sender": "Hesperus",
+		"subject": "Another test message",
+		"content": "Good day,\n This is another message. Eosphorous told me to send it to you, so here you are.\n You may disregard it.",
+		"attachments": {},
+		"isRead": false
+	}
 }
 
 var connectionDict: Dictionary = {
 	"hostname": "RSM_AGENT_FFFFFFFF",
 	"address": "FF:FF:00:00:FF:FF",
 	"ports": [21, 22, 121, 389]
+}
+
+const musicDict: Dictionary = {
+	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
+	"firstmission": "res://sounds/bgm/ForensicLab.ogg",
 }
 
 const sectorPrefixes: Dictionary = {

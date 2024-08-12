@@ -11,8 +11,9 @@ func _on_terminal_button_pressed():
 
 func _on_open_mail_view_pressed():
 	clearViewport()
-	pass # Replace with function body.
 
+func _on_mail_open():
+	pass
 
 func _on_connection_view_pressed():
 	clearViewport()
