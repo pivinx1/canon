@@ -43,9 +43,11 @@ func generateAgent(sector: String, type: String):
 	var agentMacArray: Array[String] = ["", "", "", "", "", ""]
 	var fullAgentNamePlaceholder = "{sector}_{type}_{id}"
 	var agentId: String
-	for octet in agentMacArray:
+	for octet in agentMacArray.size():
 		for i in 2:
-			octet += macAddressArray[rng.randi_range(0, 15)]
+			agentMacArray[octet] += macAddressArray[rng.randi_range(0, 15)]
+			print(octet)
+	print(agentMacArray)
 	var agentMacAddress: String = "%s:%s:%s:%s:%s:%s"
 	agentMacAddress = agentMacAddress % [agentMacArray[0], agentMacArray[1], agentMacArray[2], agentMacArray[3], agentMacArray[4], agentMacArray[5]]
 	for i in 6:

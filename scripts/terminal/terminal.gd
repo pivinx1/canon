@@ -9,14 +9,20 @@ func _ready():
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ENTER):
-		var command: String = "\n> " + entry_field.text 
-		echo_box.text += command
+		var command: String = "> " + entry_field.text 
+		echo(command)
 		handleCommand(entry_field.text)
 		entry_field.text = ""
+
+func echo(str: String):
+	echo_box.text += str("\n" + str)
 
 func handleCommand(command: String):
 	match command:
 		"roundup":
-			globaldata.generateAgent(globaldata.currentSector)
+			var agentArray: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
+			globaldata.connectionDict["hostname"] = agentArray[0]
+			globaldata.connectionDict["address"] = agentArray[1]
+			echo("Found Agent " + agentArray[0] + " with address " + agentArray[1])
 		_:
-			pass
+			echo("No such command " + command + " - Check syntax and retry.")
