@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var viewport = get_node("Viewport")
+@onready var viewport: Node = $Viewport
+var emailDict = globaldata.emailDict
 
 func _on_terminal_button_pressed():
 	clearViewport()
@@ -11,9 +12,22 @@ func _on_terminal_button_pressed():
 
 func _on_open_mail_view_pressed():
 	clearViewport()
+	var packedMail: PackedScene = preload("res://prefab/mail.tscn")
+	var mailInstance: Node = packedMail.instantiate()
+	viewport.add_child(mailInstance)
+	mailInstance.connect("openMail", Callable(_on_mail_open))
 
-func _on_mail_open():
-	pass
+func _on_mail_open(idx):
+	print(idx)
+	clearViewport()
+	var packedReader: PackedScene = preload("res://prefab/mailReader.tscn")
+	var readerInstance: Node = packedReader.instantiate()
+	viewport.add_child(readerInstance)
+	readerInstance.connect("goBack", _on_open_mail_view_pressed)
+	readerInstance.get_child(1).set_text("Sender: %s" % emailDict[idx]["sender"])
+	readerInstance.get_child(2).set_text("Subject: %s" % emailDict[idx]["subject"])
+	readerInstance.get_child(3).get_child(0).set_text(emailDict[idx]["content"])
+	emailDict[idx]["isRead"] = true
 
 func _on_connection_view_pressed():
 	clearViewport()

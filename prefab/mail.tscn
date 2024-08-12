@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2wb6n33bhqy6"]
 
 [ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_5d3ne"]
-[ext_resource type="Script" path="res://scripts/email/entryContainer.gd" id="2_rpvjt"]
+[ext_resource type="Script" path="res://scripts/email/mail.gd" id="2_8dhb2"]
 
 [node name="Mail" type="Control"]
 layout_mode = 3
@@ -13,6 +13,7 @@ offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5d3ne")
+script = ExtResource("2_8dhb2")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -38,4 +39,3 @@ offset_bottom = 408.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("2_rpvjt")

@@ -59,7 +59,7 @@ func _ready():
 func generateAgent(sector: String, type: String):
 	var agentMacArray: Array[String] = ["", "", "", "", "", ""]
 	var fullAgentNamePlaceholder = "{sector}_{type}_{id}"
-	var agentId: String
+	var agentId: String = ""
 	for octet in agentMacArray.size():
 		for i in 2:
 			agentMacArray[octet] += macAddressArray[rng.randi_range(0, 15)]

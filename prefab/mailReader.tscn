@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuvbrcqy0fenm"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_lhnx6"]
+[ext_resource type="Script" path="res://scripts/email/mailReader.gd" id="2_ph0rc"]
+
+[node name="MailReader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -415.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lhnx6")
+script = ExtResource("2_ph0rc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 736.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 212.0
+offset_bottom = 32.0
+text = "Return to mailbox"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 12
+text = "<"
+clip_text = true
+
+[node name="Sender" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 704.0
+offset_bottom = 67.0
+text = "Sender: {sender}"
+
+[node name="Subject" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 73.0
+offset_right = 704.0
+offset_bottom = 92.0
+text = "Subject: {subject}"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 728.0
+offset_bottom = 408.0
+
+[node name="Label" type="Label" parent="ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

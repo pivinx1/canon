@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3vo4yxu82w3a" path="res://textures/UIComponents/Mail.png" id="2_cy5o5"]
 
 [node name="MailEntry" type="Button"]
+custom_minimum_size = Vector2(0, 40)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
