@@ -2,6 +2,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+var currentSector: String = "reversetower"
+
 const musicDict: Dictionary = {
 	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
 	"firstmission": "res://sounds/bgm/ForensicLab.ogg",
@@ -22,9 +24,11 @@ var sectorPrefixes: Dictionary = {
 	"burbank": "BUR",
 	"copley": "COP",
 	"ascension": "ASC",
+	"reversetower": "RTOWER",
 }
 
 var miscAgentNamingParts: Dictionary = {
+	"generic": "AGENT",
 	"admin": "ADMIN",
 	"trader": "DCT",
 	"sanctifier": "SANCT",
@@ -35,10 +39,17 @@ var macAddressArray: Array[String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8
 func _ready():
 	rng.randomize()
 
-func generateAgent(sector: String):
+func generateAgent(sector: String, type: String):
 	var agentMacArray: Array[String] = ["", "", "", "", "", ""]
+	var fullAgentNamePlaceholder = "{sector}_{type}_{id}"
 	var agentId: String
 	for octet in agentMacArray:
 		for i in 2:
-			octet += str(rng.randi_range(0, 15))
+			octet += macAddressArray[rng.randi_range(0, 15)]
+	var agentMacAddress: String = "%s:%s:%s:%s:%s:%s"
+	agentMacAddress = agentMacAddress % [agentMacArray[0], agentMacArray[1], agentMacArray[2], agentMacArray[3], agentMacArray[4], agentMacArray[5]]
+	for i in 6:
+		agentId += macAddressArray[rng.randi_range(0, 15)]
+	var fullAgentName: String = fullAgentNamePlaceholder.format({"sector": sectorPrefixes[sector], "type": miscAgentNamingParts[type], "id": agentId})
+	return [fullAgentName, agentMacAddress]
 	
