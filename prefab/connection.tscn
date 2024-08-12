@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://fumm2m33gxge"]
+[gd_scene load_steps=5 format=3 uid="uid://fumm2m33gxge"]
 
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_5ve1h"]
 [ext_resource type="Texture2D" uid="uid://c0se5epayojov" path="res://textures/agentIcons/placeholder.png" id="1_fec58"]
 [ext_resource type="Script" path="res://scripts/connection/connection.gd" id="1_yoqkt"]
 
@@ -15,6 +16,7 @@ offset_right = -415.0
 offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5ve1h")
 script = ExtResource("1_yoqkt")
 addressField = NodePath("AgentAddress")
 hostnameField = NodePath("AgentHostname")

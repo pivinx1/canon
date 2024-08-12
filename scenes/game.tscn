@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7pdo7r01v0vm"]
+[gd_scene load_steps=19 format=3 uid="uid://c7pdo7r01v0vm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_2eukn"]
 [ext_resource type="Texture2D" uid="uid://8xvo1wyc50l6" path="res://textures/sanctifiers_logo.png" id="1_ax7cx"]
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_rotnm"]
 [ext_resource type="Script" path="res://scripts/Jukebox.gd" id="2_3awj7"]
 [ext_resource type="Script" path="res://scripts/Toolbar.gd" id="3_ywqmx"]
 [ext_resource type="Texture2D" uid="uid://b2l51tjioeu4t" path="res://textures/UIComponents/Cross.png" id="4_5bj53"]
@@ -42,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_rotnm")
 script = ExtResource("1_2eukn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

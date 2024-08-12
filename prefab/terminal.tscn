@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0mpgb5epdl6q"]
+[gd_scene load_steps=4 format=3 uid="uid://d0mpgb5epdl6q"]
 
 [ext_resource type="Script" path="res://scripts/terminal/terminal.gd" id="1_bxis3"]
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_wmp3o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnlvt"]
 font_size = 14
@@ -14,6 +15,7 @@ offset_right = -421.0
 offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_wmp3o")
 script = ExtResource("1_bxis3")
 entry_field = NodePath("EntryField")
 echo_box = NodePath("Echo")

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://yihqjdsgadyv"]
+
+[ext_resource type="FontFile" uid="uid://cp7i5ufwdfvsc" path="res://fonts/Hack-Regular.ttf" id="1_21xc5"]
+
+[resource]
+Button/fonts/font = ExtResource("1_21xc5")
+Label/fonts/font = ExtResource("1_21xc5")
+LineEdit/fonts/font = ExtResource("1_21xc5")
+ProgressBar/fonts/font = ExtResource("1_21xc5")
+TabBar/fonts/font = ExtResource("1_21xc5")
+TextEdit/fonts/font = ExtResource("1_21xc5")
+Tree/fonts/font = ExtResource("1_21xc5")
+Tree/fonts/title_button_font = ExtResource("1_21xc5")
