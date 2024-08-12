@@ -40,5 +40,5 @@ func generateAgent(sector: String):
 	var agentId: String
 	for octet in agentMacArray:
 		for i in 2:
-			octet += rng.randi_range(0, 15)
+			octet += str(rng.randi_range(0, 15))
 	
