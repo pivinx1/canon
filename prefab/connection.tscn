@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://fumm2m33gxge"]
+
+[ext_resource type="Texture2D" uid="uid://c0se5epayojov" path="res://textures/agentIcons/placeholder.png" id="1_fec58"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uige"]
+font_size = 20
+
+[node name="Connection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -415.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AgentIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 112.0
+texture = ExtResource("1_fec58")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ConnectedLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 16.0
+offset_right = 416.0
+offset_bottom = 39.0
+text = "Connected To:"
+vertical_alignment = 1
+
+[node name="ConnectedLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 68.0
+offset_right = 416.0
+offset_bottom = 91.0
+text = "FF:FF:00:00:FF:FF"
+vertical_alignment = 1
+
+[node name="AgentHostname" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 40.0
+offset_right = 576.0
+offset_bottom = 68.0
+text = "RSM_AGENT_FFFFFFFF"
+label_settings = SubResource("LabelSettings_3uige")
+vertical_alignment = 1
+
+[node name="Probe" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 432.0
+offset_bottom = 159.0
+text = "Probe System"
+alignment = 0
+
+[node name="Filesystem" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 168.0
+offset_right = 432.0
+offset_bottom = 199.0
+text = "View Filesystem"
+alignment = 0
+
+[node name="Scan" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 432.0
+offset_bottom = 239.0
+text = "Scan Vicinity
+"
+alignment = 0
+
+[node name="Disconnect" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 392.0
+offset_right = 432.0
+offset_bottom = 423.0
+text = "Disconnect
+"
+alignment = 0

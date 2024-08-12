@@ -12,3 +12,7 @@ func _input(event):
 		var command: String = "\n> " + entry_field.text 
 		echo_box.text += command
 		entry_field.text = ""
+
+func handleCommand(command: String):
+	match command:
+		

@@ -245,4 +245,6 @@ offset_bottom = 253.0
 
 [connection signal="play" from="." to="AudioStreamPlayer" method="_play"]
 [connection signal="pressed" from="Toolbar/ExitGame" to="Toolbar" method="_on_exit_game_pressed"]
+[connection signal="pressed" from="Toolbar/OpenMailView" to="MonitorView" method="_on_open_mail_view_pressed"]
 [connection signal="pressed" from="Toolbar/OpenTerminal" to="MonitorView" method="_on_terminal_button_pressed"]
+[connection signal="pressed" from="Toolbar/ConnectionView" to="MonitorView" method="_on_connection_view_pressed"]
