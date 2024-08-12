@@ -4,6 +4,8 @@ var rng = RandomNumberGenerator.new()
 
 var currentSector: String = "reversetower"
 
+
+
 const musicDict: Dictionary = {
 	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
 	"firstmission": "res://sounds/bgm/ForensicLab.ogg",
@@ -15,7 +17,7 @@ var connectionDict: Dictionary = {
 	"ports": [21, 22, 121, 389]
 }
 
-var sectorPrefixes: Dictionary = {
+const sectorPrefixes: Dictionary = {
 	"rossum": "RSM",
 	"cyclopes": "CYL",
 	"helios": "HEL",
@@ -27,14 +29,14 @@ var sectorPrefixes: Dictionary = {
 	"reversetower": "RTOWER",
 }
 
-var miscAgentNamingParts: Dictionary = {
+const miscAgentNamingParts: Dictionary = {
 	"generic": "AGENT",
 	"admin": "ADMIN",
 	"trader": "DCT",
 	"sanctifier": "SANCT",
 }
 
-var macAddressArray: Array[String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+const macAddressArray: Array[String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
 
 func _ready():
 	rng.randomize()
