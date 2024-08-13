@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 globaldata="*res://autoLoads/globaldata.gd"
+playerdata="*res://autoLoads/playerData.gd"
 
 [display]
 

@@ -57,18 +57,21 @@ func _ready():
 	rng.randomize()
 
 func generateAgent(sector: String, type: String):
-	var agentMacArray: Array[String] = ["", "", "", "", "", ""]
 	var fullAgentNamePlaceholder = "{sector}_{type}_{id}"
 	var agentId: String = ""
-	for octet in agentMacArray.size():
-		for i in 2:
-			agentMacArray[octet] += macAddressArray[rng.randi_range(0, 15)]
-			print(octet)
-	print(agentMacArray)
-	var agentMacAddress: String = "%s:%s:%s:%s:%s:%s"
-	agentMacAddress = agentMacAddress % [agentMacArray[0], agentMacArray[1], agentMacArray[2], agentMacArray[3], agentMacArray[4], agentMacArray[5]]
+	var agentMacAddress = generateMacAddr()
 	for i in 6:
 		agentId += macAddressArray[rng.randi_range(0, 15)]
 	var fullAgentName: String = fullAgentNamePlaceholder.format({"sector": sectorPrefixes[sector], "type": miscAgentNamingParts[type], "id": agentId})
 	return [fullAgentName, agentMacAddress]
-	
+
+func generateMacAddr():
+	var macArray: Array[String] = ["", "", "", "", "", ""]
+	for octet in macArray.size():
+		for i in 2:
+			macArray[octet] += macAddressArray[rng.randi_range(0, 15)]
+			print(octet)
+	print(macArray)
+	var macAddress: String = "%s:%s:%s:%s:%s:%s"
+	macAddress = macAddress % [macArray[0], macArray[1], macArray[2], macArray[3], macArray[4], macArray[5]]
+	return macAddress
