@@ -57,12 +57,8 @@ func _ready():
 	rng.randomize()
 
 func generateAgent(sector: String, type: String):
-	var fullAgentNamePlaceholder = "{sector}_{type}_{id}"
-	var agentId: String = ""
 	var agentMacAddress = generateMacAddr()
-	for i in 6:
-		agentId += macAddressArray[rng.randi_range(0, 15)]
-	var fullAgentName: String = fullAgentNamePlaceholder.format({"sector": sectorPrefixes[sector], "type": miscAgentNamingParts[type], "id": agentId})
+	var fullAgentName = generateHostname(sector, "agent")
 	return [fullAgentName, agentMacAddress]
 
 func generateMacAddr():
@@ -75,3 +71,17 @@ func generateMacAddr():
 	var macAddress: String = "%s:%s:%s:%s:%s:%s"
 	macAddress = macAddress % [macArray[0], macArray[1], macArray[2], macArray[3], macArray[4], macArray[5]]
 	return macAddress
+
+func generateHostname(sector: String, agentType: String = "agent", agentName: String = ""):
+	if agentName == "":
+		const fullAgentNamePlaceholder = "{sector}_{type}_{id}"
+		var agentId: String = ""
+		for i in 6:
+			agentId += macAddressArray[rng.randi_range(0, 15)]
+		var fullAgentName: String = fullAgentNamePlaceholder.format({"sector": sectorPrefixes[sector], "type": miscAgentNamingParts[agentType], "id": agentId})
+		return fullAgentName
+	else:
+		match agentType:
+			"sanctifier":
+				const fullAgentNamePlaceholder = "{type}_{name}"
+				return fullAgentNamePlaceholder.format({"type": miscAgentNamingParts[agentType], "name": agentName})

@@ -38,5 +38,6 @@ func _on_confirm_pressed():
 		1:
 			playerInfo["playerGender"] = "F"
 	playerInfo["playerMac"] = globaldata.generateMacAddr()
+	playerInfo["playerHostname"] = globaldata.generateHostname("reversetower", "sanctifier", playerInfo["playerName"].replace(" ", ""))
 	print("Player's MAC address is %s" % playerInfo["playerMac"])
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

@@ -18,11 +18,16 @@ func echo(str: String):
 	echo_box.text += str("\n" + str)
 
 func handleCommand(command: String):
-	match command:
+	var slicedCommand: Array[String] = command.rsplit()
+	match slicedCommand[0]:
 		"roundup":
 			var agentArray: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
 			globaldata.connectionDict["hostname"] = agentArray[0]
 			globaldata.connectionDict["address"] = agentArray[1]
 			echo("Found Agent " + agentArray[0] + " with address " + agentArray[1])
+		"connect": 
+			var targetMac: String = slicedCommand[1]
+			if targetMac == playerdata.playerInfoDict["playerMac"] or targetMac == "00:00:00:00:00:00":
+				pass
 		_:
 			echo("No such command " + command + " - Check syntax and retry.")
