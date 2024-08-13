@@ -1,0 +1,14 @@
+{
+	"riko": {
+		"type": "trader",
+		"name": "Riko",
+		"sector": "rossum",
+		"address": "random"
+	}, 
+	"faith": {
+		"type": "sanctifier",
+		"name": "Faith",
+		"sector": "rossum",
+		"address": "random"
+	},
+}

@@ -1,5 +1,6 @@
 extends Panel
 
+signal exit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,5 +10,5 @@ func _ready():
 
 
 func _on_exit_game_pressed():
-	get_tree().quit()
+	exit.emit()
 	

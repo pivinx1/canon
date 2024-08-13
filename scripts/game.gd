@@ -8,3 +8,10 @@ signal play(bgm: String)
 func _ready():
 	play.emit(music["postCreation"])
 
+
+
+func _on_toolbar_exit():
+	var confirmationBoxPacked: PackedScene = preload("res://prefab/closeConfirmBox.tscn")
+	var boxInstance: Node = confirmationBoxPacked.instantiate()
+	add_child(boxInstance)
+	boxInstance.global_position = Vector2(327, 176)
