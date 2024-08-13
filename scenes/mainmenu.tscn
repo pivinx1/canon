@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmxsl7bqkjyjp"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_emynt"]
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="2_diogw"]
+[ext_resource type="AudioStream" uid="uid://kxtcfjlp1yk" path="res://sounds/bgm/ForensicsUnderscore.ogg" id="3_bv25c"]
+
+[node name="Mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_emynt")
+script = ExtResource("2_diogw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bv25c")
+autoplay = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 36
+text = "canon_"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 107.0
+offset_right = 104.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 12
+text = "Ver. a0.0.1"
+
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 144.0
+offset_right = 312.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 14
+text = "Create Sanctifier..."
+alignment = 0
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 184.0
+offset_right = 312.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 14
+text = "Continue as..."
+alignment = 0
+
+[node name="ContinueAs" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 216.0
+offset_right = 312.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 14
+text = "Log in"
+alignment = 0
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 272.0
+offset_right = 312.0
+offset_bottom = 297.0
+theme_override_font_sizes/font_size = 14
+text = "Settings"
+alignment = 0
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 304.0
+offset_right = 312.0
+offset_bottom = 329.0
+theme_override_font_sizes/font_size = 14
+text = "Quit"
+alignment = 0
