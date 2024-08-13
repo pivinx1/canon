@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmxsl7bqkjyjp"]
+[gd_scene load_steps=5 format=3 uid="uid://cmxsl7bqkjyjp"]
 
 [ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_emynt"]
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="2_diogw"]
 [ext_resource type="AudioStream" uid="uid://kxtcfjlp1yk" path="res://sounds/bgm/ForensicsUnderscore.ogg" id="3_bv25c"]
+[ext_resource type="Script" path="res://scripts/RegisterScreen.gd" id="4_20sw3"]
 
 [node name="Mainmenu" type="Control"]
 layout_mode = 3
@@ -100,6 +101,7 @@ offset_left = 328.0
 offset_top = 96.0
 offset_right = 648.0
 offset_bottom = 400.0
+script = ExtResource("4_20sw3")
 
 [node name="Label" type="Label" parent="RegisterScreen"]
 layout_mode = 0
@@ -142,6 +144,7 @@ offset_top = 80.0
 offset_right = 304.0
 offset_bottom = 107.0
 placeholder_text = "Access Key"
+secret = true
 
 [node name="ConfirmPassword" type="LineEdit" parent="RegisterScreen"]
 layout_mode = 0
@@ -150,6 +153,7 @@ offset_top = 112.0
 offset_right = 304.0
 offset_bottom = 139.0
 placeholder_text = "Confirm Access Key"
+secret = true
 
 [node name="Confirm" type="Button" parent="RegisterScreen"]
 layout_mode = 0
@@ -173,3 +177,6 @@ alignment = 0
 
 [connection signal="pressed" from="MainMenuButtons/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mainMenuShow" from="RegisterScreen" to="." method="_on_register_screen_main_menu_show"]
+[connection signal="pressed" from="RegisterScreen/Confirm" to="RegisterScreen" method="_on_confirm_pressed"]
+[connection signal="pressed" from="RegisterScreen/Abort" to="RegisterScreen" method="_on_abort_pressed"]
