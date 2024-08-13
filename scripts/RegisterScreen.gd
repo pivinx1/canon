@@ -3,6 +3,7 @@ extends Control
 signal mainMenuShow
 
 var playerInfo = playerdata.playerInfoDict
+var playerFs = playerdata.playerFs
 
 @onready var playerGenderField = $NameBlock/GenderPicker
 @onready var playerNameField = $NameBlock/NameLineEdit
@@ -40,4 +41,5 @@ func _on_confirm_pressed():
 	playerInfo["playerMac"] = globaldata.generateMacAddr()
 	playerInfo["playerHostname"] = globaldata.generateHostname("reversetower", "sanctifier", playerInfo["playerName"].replace(" ", ""))
 	print("Player's MAC address is %s" % playerInfo["playerMac"])
+	playerFs["sbin"]["networkd"]["eno0.cfg"] = playerFs["sbin"]["networkd"]["eno0.cfg"] % playerInfo["playerMac"]
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

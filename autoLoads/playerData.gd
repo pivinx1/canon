@@ -1,5 +1,7 @@
 extends Node
 
+var files = globaldata.files
+
 var playerInfoDict: Dictionary = {
 	"playerName": "",
 	"playerGender": "",
@@ -27,6 +29,10 @@ var playerFs: Dictionary = {
 		
 	},
 	"sbin": {
-		
+		"ctOS_4.6.1_R2_SCALE.elf.gz": files["ctos_sanctifier"]["content"],
+		"networkd": {
+			"netdrv.sys": files["sanctifier_netdrv"],
+			"eno0.cfg": "hwaddr: %s\ndriver: virtio-net"
+		}
 	}
 }

@@ -1,5 +1,7 @@
 extends Control
 
+signal openFsWindow
+
 var connectionDetails: Dictionary
 
 @export var addressField: Label
@@ -11,3 +13,7 @@ func _ready():
 	addressField.text = connectionDetails["address"]
 	hostnameField.text = connectionDetails["hostname"]
 
+
+
+func _on_filesystem_pressed():
+	openFsWindow.emit()

@@ -11,4 +11,10 @@
 		"sector": "rossum",
 		"address": "random"
 	},
+	"turing": {
+		"type": "admin",
+		"name": "Turing",
+		"sector": "rossum",
+		"address": "random"
+	}
 }

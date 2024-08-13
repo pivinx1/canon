@@ -24,6 +24,7 @@ func handleCommand(command: String):
 			var agentArray: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
 			globaldata.connectionDict["hostname"] = agentArray[0]
 			globaldata.connectionDict["address"] = agentArray[1]
+			agentregistry.registerAgent("agent", agentArray[0], agentArray[1])
 			echo("Found Agent " + agentArray[0] + " with address " + agentArray[1])
 		"connect": 
 			var targetMac: String = slicedCommand[1]
@@ -31,5 +32,14 @@ func handleCommand(command: String):
 				var connection = globaldata.connectionDict
 				connection["hostname"] = playerdata.playerInfoDict["playerHostname"]
 				connection["address"] = playerdata.playerInfoDict["playerMac"]
+				connection["filesystem"] = playerdata.playerFs
+			else:
+				if agentregistry.agentRegistry.has(targetMac):
+					var connection = globaldata.connectionDict
+					connection["hostname"] = agentregistry.agentRegistry[targetMac]["hostname"]
+					connection["address"] = targetMac
+					connection["filesystem"] = agentregistry.agentRegistry[targetMac]["filesystem"]
+				else:
+					echo("Failed to connect: Could not find host at " + targetMac)
 		_:
 			echo("No such command " + command + " - Check syntax and retry.")

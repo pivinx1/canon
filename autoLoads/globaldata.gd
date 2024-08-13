@@ -2,6 +2,9 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+var fileRegistry: String = "res://staticData/files.json"
+var files: Dictionary = loadFiles()
+
 var currentSector: String = "reversetower"
 
 var emailDict = {
@@ -24,7 +27,23 @@ var emailDict = {
 var connectionDict: Dictionary = {
 	"hostname": "RSM_AGENT_FFFFFFFF",
 	"address": "FF:FF:00:00:FF:FF",
-	"ports": [21, 22, 121, 389]
+	"ports": [21, 22, 121, 389],
+	"filesystem": {
+			"home": {
+				
+			},
+			"var": {
+				"log": {
+					
+				}
+			},
+			"bin": {
+				
+			},
+			"sbin": {
+				"ctOS_4.5.7_CORE.gz": files["ctos_agent"]["content"]
+			}
+	}
 }
 
 const musicDict: Dictionary = {
@@ -85,3 +104,19 @@ func generateHostname(sector: String, agentType: String = "generic", agentName: 
 			"sanctifier":
 				const fullAgentNamePlaceholder = "{type}_{name}"
 				return fullAgentNamePlaceholder.format({"type": miscAgentNamingParts[agentType], "name": agentName})
+				
+func loadJSON(path: String):
+	if FileAccess.file_exists(path):
+		var dataFile = FileAccess.open(path, FileAccess.READ)
+		
+		var parsedResult = JSON.parse_string(dataFile.get_as_text())
+		if parsedResult is Dictionary:
+			return parsedResult
+		else:
+			print("Error reading file")
+	else:
+		print("File doesn't exist")
+		
+func loadFiles():
+	return loadJSON(fileRegistry)
+

@@ -96,3 +96,5 @@ offset_bottom = 423.0
 text = "Disconnect
 "
 alignment = 0
+
+[connection signal="pressed" from="Filesystem" to="." method="_on_filesystem_pressed"]

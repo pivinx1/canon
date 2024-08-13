@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnrqgau0vljdd"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_4tmla"]
+[ext_resource type="Script" path="res://scripts/filesystem/filesystem.gd" id="2_gvuq6"]
+
+[node name="Filesystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -415.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4tmla")
+script = ExtResource("2_gvuq6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 16.0
+offset_right = 588.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 22
+text = "Filesystem of HOSTNAME"
+vertical_alignment = 1
+
+[node name="FSTree" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 656.0
+offset_bottom = 416.0
+hide_root = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 48.0
+text = "<"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

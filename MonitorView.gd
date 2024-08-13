@@ -34,7 +34,15 @@ func _on_connection_view_pressed():
 	var packedConnection: PackedScene = preload("res://prefab/connection.tscn")
 	var connectionInstance: Node = packedConnection.instantiate()
 	viewport.add_child(connectionInstance)
-	
+	connectionInstance.connect("openFsWindow", _on_open_fs_window)
+
+func _on_open_fs_window():
+	clearViewport()
+	var packedFsViewer: PackedScene = preload("res://prefab/filesystem.tscn")
+	var fsViewerInstance: Node = packedFsViewer.instantiate()
+	viewport.add_child(fsViewerInstance)
+	fsViewerInstance.connect("back", _on_connection_view_pressed)
+
 func clearViewport():
 	var children: Array[Node] = viewport.get_children()
 	for child: Node in children:
