@@ -13,3 +13,20 @@ var playerStats: Dictionary = {
 	"ramPool": 768,	#	1 MqB
 	"ramUsage": 0
 }
+
+var playerFs: Dictionary = {
+	"home": {
+		
+	},
+	"var": {
+		"log": {
+			
+		}
+	},
+	"bin": {
+		
+	},
+	"sbin": {
+		
+	}
+}
