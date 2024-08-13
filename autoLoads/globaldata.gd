@@ -58,7 +58,7 @@ func _ready():
 
 func generateAgent(sector: String, type: String):
 	var agentMacAddress = generateMacAddr()
-	var fullAgentName = generateHostname(sector, "agent")
+	var fullAgentName = generateHostname(sector)
 	return [fullAgentName, agentMacAddress]
 
 func generateMacAddr():
@@ -72,7 +72,7 @@ func generateMacAddr():
 	macAddress = macAddress % [macArray[0], macArray[1], macArray[2], macArray[3], macArray[4], macArray[5]]
 	return macAddress
 
-func generateHostname(sector: String, agentType: String = "agent", agentName: String = ""):
+func generateHostname(sector: String, agentType: String = "generic", agentName: String = ""):
 	if agentName == "":
 		const fullAgentNamePlaceholder = "{sector}_{type}_{id}"
 		var agentId: String = ""

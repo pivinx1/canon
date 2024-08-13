@@ -7,12 +7,11 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
-func _input(event):
-	if Input.is_key_pressed(KEY_ENTER):
-		var command: String = "> " + entry_field.text 
-		echo(command)
-		handleCommand(entry_field.text)
-		entry_field.text = ""
+func _on_entry_field_text_submitted(new_text):
+	var command: String = "> " + new_text
+	echo(command)
+	handleCommand(new_text)
+	entry_field.text = ""
 
 func echo(str: String):
 	echo_box.text += str("\n" + str)

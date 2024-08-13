@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7pdo7r01v0vm"]
+[gd_scene load_steps=20 format=3 uid="uid://c7pdo7r01v0vm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_2eukn"]
 [ext_resource type="Texture2D" uid="uid://8xvo1wyc50l6" path="res://textures/sanctifiers_logo.png" id="1_ax7cx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c3vo4yxu82w3a" path="res://textures/UIComponents/Mail.png" id="6_sh76b"]
 [ext_resource type="Script" path="res://MonitorView.gd" id="7_jqy2d"]
 [ext_resource type="Texture2D" uid="uid://cmopjbn4eaaa" path="res://textures/UIComponents/ConnectionComputer.png" id="8_c3f8j"]
+[ext_resource type="Script" path="res://scripts/OperandUsage.gd" id="10_aqqp8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n43j"]
 font_size = 8
@@ -128,6 +129,7 @@ offset_left = 2.0
 offset_top = 28.0
 offset_right = 167.0
 offset_bottom = 58.0
+script = ExtResource("10_aqqp8")
 
 [node name="ProgressBar" type="ProgressBar" parent="OperandUsage"]
 layout_mode = 0

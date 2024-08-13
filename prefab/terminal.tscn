@@ -34,3 +34,5 @@ layout_mode = 0
 offset_right = 731.0
 offset_bottom = 397.0
 label_settings = SubResource("LabelSettings_lnlvt")
+
+[connection signal="text_submitted" from="EntryField" to="." method="_on_entry_field_text_submitted"]
