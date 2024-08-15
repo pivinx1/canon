@@ -41,4 +41,5 @@ offset_right = 64.0
 offset_bottom = 48.0
 text = "<"
 
+[connection signal="item_mouse_selected" from="FSTree" to="." method="_on_fs_tree_item_mouse_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

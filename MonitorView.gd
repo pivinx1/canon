@@ -36,12 +36,22 @@ func _on_connection_view_pressed():
 	viewport.add_child(connectionInstance)
 	connectionInstance.connect("openFsWindow", _on_open_fs_window)
 
+func _on_open_file_reader(fname: String, fcontent: String):
+	clearViewport()
+	var packedReader: PackedScene = preload("res://prefab/fileReader.tscn")
+	var readerInstance: Node = packedReader.instantiate()
+	viewport.add_child(readerInstance)
+	readerInstance.connect("exit", _on_open_fs_window)
+	readerInstance.get_child(0).set_text(fname)
+	readerInstance.get_child(1).get_child(0).get_child(0).set_text(fcontent)
+
 func _on_open_fs_window():
 	clearViewport()
 	var packedFsViewer: PackedScene = preload("res://prefab/filesystem.tscn")
 	var fsViewerInstance: Node = packedFsViewer.instantiate()
 	viewport.add_child(fsViewerInstance)
 	fsViewerInstance.connect("back", _on_connection_view_pressed)
+	fsViewerInstance.connect("openFileReader", _on_open_file_reader)
 
 func clearViewport():
 	var children: Array[Node] = viewport.get_children()

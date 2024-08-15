@@ -11,7 +11,7 @@ var playerInfoDict: Dictionary = {
 
 var playerStats: Dictionary = {
 	"operandPool": 50,
-	"operandUsage": 50,
+	"operandUsage": 25,
 	"ramPool": 768,	#	1 MqB
 	"ramUsage": 0
 }
@@ -31,7 +31,7 @@ var playerFs: Dictionary = {
 	"sbin": {
 		"ctOS_4.6.1_R2_SCALE.elf.gz": files["ctos_sanctifier"]["content"],
 		"networkd": {
-			"netdrv.sys": files["sanctifier_netdrv"],
+			"netdrv.sys": files["sanctifier_netdrv"]["content"],
 			"eno0.cfg": "hwaddr: %s\ndriver: virtio-net"
 		}
 	}

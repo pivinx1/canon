@@ -1,6 +1,7 @@
 extends Control
 
 signal back
+signal openFileReader(fname: String, fcontent: String)
 
 @onready var tree: Tree = $FSTree
 @onready var label: Label = $Label
@@ -34,6 +35,29 @@ func populate_tree(tree: Tree, dictionary: Dictionary, parent: TreeItem = null) 
 		else:
 			item.set_metadata(0, value)  # Optional: store the value in metadata for future use
 
+func findItem(tree: Tree, fs: Dictionary, item: String):
+	for key in fs.keys():
+		print("Key: " + key)
+		var value = fs[key]
+		print("Found value: " + str(value))
+		if key == item:
+			print("Found item")
+			print(value)
+			return fs[key]
+		elif typeof(value) == TYPE_DICTIONARY:
+			print("Advancing to folder " + key + "\n")
+			var result = findItem(tree, value, item)
+			if result!= null:
+				return result
+		else:
+			print("Continuing search\n")
+	return null
 
 func _on_back_pressed():
 	back.emit()
+
+
+func _on_fs_tree_item_mouse_selected(position, mouse_button_index):
+	var item = tree.get_item_at_position(position)
+	var fname = item.get_text(0)
+	openFileReader.emit(fname ,findItem(tree, connectionFs, fname))

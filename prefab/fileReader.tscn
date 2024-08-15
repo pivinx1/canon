@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpxmyee0cee5l"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_l7yoa"]
+[ext_resource type="Script" path="res://scripts/filesystem/filereader.gd" id="2_ekcpd"]
+
+[node name="FileReader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -415.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l7yoa")
+script = ExtResource("2_ekcpd")
+
+[node name="Filename" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 5.0
+offset_right = 485.0
+offset_bottom = 28.0
+text = "FILENAME"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 32.0
+offset_right = 724.0
+offset_bottom = 426.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 711.0
+offset_bottom = 390.0
+horizontal_scroll_mode = 0
+
+[node name="FileContent" type="Label" parent="Panel/ScrollContainer"]
+custom_minimum_size = Vector2(705, 0)
+layout_mode = 2
+text = "FILECONTENT"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 30.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 12
+text = "<"
+clip_text = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
