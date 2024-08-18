@@ -3,18 +3,38 @@
 		"type": "trader",
 		"name": "Riko",
 		"sector": "rossum",
-		"address": "random"
+		"address": "02:42:AC:11:2F:FF",
+		"ports": {
+			"22": "filtered",
+			"69": "filtered",
+			"121": "open",
+			"3381": "open"
+		}
 	}, 
 	"faith": {
 		"type": "sanctifier",
 		"name": "Faith",
 		"sector": "rossum",
-		"address": "random"
+		"address": "24:B6:57:3A:4C:7B",
+		"ports": {
+			"22": "open",
+			"69": "open",
+			"337": "open",
+			"1433": "open"
+		}
 	},
 	"turing": {
 		"type": "admin",
 		"name": "Turing",
 		"sector": "rossum",
-		"address": "random"
+		"address": "02:42:AC:11:0C:01",
+		"ports": {
+			"22": "open",
+			"69": "open",
+			"121": "open",
+			"1433": "closed",
+			"2377": "filtered",
+			"5006": "filtered"
+		}
 	}
 }

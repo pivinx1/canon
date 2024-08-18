@@ -3,6 +3,8 @@ extends Node
 var rng = RandomNumberGenerator.new()
 
 var fileRegistry: String = "res://staticData/files.json"
+var portRegistry: String = "res://staticData/services.json"
+var hardAgentRegistry: String = "res://staticData/predefinedNodes.json"
 var files: Dictionary = loadFiles()
 
 var currentSector: String = "reversetower"
@@ -25,30 +27,19 @@ var emailDict = {
 }
 
 var connectionDict: Dictionary = {
-	"hostname": "RSM_AGENT_FFFFFFFF",
-	"address": "FF:FF:00:00:FF:FF",
-	"ports": [21, 22, 121, 389],
-	"filesystem": {
-			"home": {
-				
-			},
-			"var": {
-				"log": {
-					
-				}
-			},
-			"bin": {
-				
-			},
-			"sbin": {
-				"ctOS_4.5.7_CORE.gz": files["ctos_agent"]["content"]
-			}
-	}
 }
 
 const musicDict: Dictionary = {
 	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
 	"firstmission": "res://sounds/bgm/ForensicLab.ogg",
+}
+
+var portColorDict: Dictionary = {
+	"unknown": Color.hex(0xaaaaaaff),
+	"open": Color.hex(0x6ec347ff),
+	"closed": Color.hex(0xf80028ff),
+	"filtered": Color.hex(0xa28100ff),
+	"entropized": Color.hex(0xc512c6ff)
 }
 
 const sectorPrefixes: Dictionary = {
@@ -85,8 +76,6 @@ func generateMacAddr():
 	for octet in macArray.size():
 		for i in 2:
 			macArray[octet] += macAddressArray[rng.randi_range(0, 15)]
-			print(octet)
-	print(macArray)
 	var macAddress: String = "%s:%s:%s:%s:%s:%s"
 	macAddress = macAddress % [macArray[0], macArray[1], macArray[2], macArray[3], macArray[4], macArray[5]]
 	return macAddress
@@ -102,6 +91,14 @@ func generateHostname(sector: String, agentType: String = "generic", agentName: 
 	else:
 		match agentType:
 			"sanctifier":
+				const fullAgentNamePlaceholder = "{type}_{name}"
+				return fullAgentNamePlaceholder.format({"type": miscAgentNamingParts[agentType], "name": agentName})
+			"admin":
+				const fullAgentNamePlaceholder = "{sector}_{type}_{name}"
+				return fullAgentNamePlaceholder.format({"type": miscAgentNamingParts[agentType],
+														"name": agentName,
+														"sector": sectorPrefixes[sector]})
+			"trader":
 				const fullAgentNamePlaceholder = "{type}_{name}"
 				return fullAgentNamePlaceholder.format({"type": miscAgentNamingParts[agentType], "name": agentName})
 				
@@ -120,3 +117,8 @@ func loadJSON(path: String):
 func loadFiles():
 	return loadJSON(fileRegistry)
 
+func loadPorts():
+	return loadJSON(portRegistry)
+
+func loadHardAgents():
+	return loadJSON(hardAgentRegistry) 

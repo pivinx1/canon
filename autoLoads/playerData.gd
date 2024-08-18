@@ -9,6 +9,13 @@ var playerInfoDict: Dictionary = {
 	"playerHostname": "",
 }
 
+var playerPorts: Dictionary = {
+	"22": "filtered",
+	"69": "filtered", 
+	"25": "open",
+	"337": "filtered"
+}
+
 var playerStats: Dictionary = {
 	"operandPool": 50,
 	"operandUsage": 25,

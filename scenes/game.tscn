@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7pdo7r01v0vm"]
+[gd_scene load_steps=21 format=3 uid="uid://c7pdo7r01v0vm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_2eukn"]
 [ext_resource type="Texture2D" uid="uid://8xvo1wyc50l6" path="res://textures/sanctifiers_logo.png" id="1_ax7cx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://MonitorView.gd" id="7_jqy2d"]
 [ext_resource type="Texture2D" uid="uid://cmopjbn4eaaa" path="res://textures/UIComponents/ConnectionComputer.png" id="8_c3f8j"]
 [ext_resource type="Script" path="res://scripts/OperandUsage.gd" id="10_aqqp8"]
+[ext_resource type="Script" path="res://scripts/RAMViewer.gd" id="11_gmlp3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4n43j"]
 font_size = 8
@@ -137,6 +138,7 @@ offset_top = 15.0
 offset_right = 165.0
 offset_bottom = 30.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_r4d0o")
+value = 25.0
 show_percentage = false
 
 [node name="Usage" type="Label" parent="OperandUsage"]
@@ -165,6 +167,7 @@ offset_left = 2.0
 offset_top = 60.0
 offset_right = 167.0
 offset_bottom = 474.0
+script = ExtResource("11_gmlp3")
 
 [node name="Label" type="Label" parent="RAMViewer"]
 layout_mode = 0

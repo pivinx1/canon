@@ -7,21 +7,29 @@
 [sub_resource type="LabelSettings" id="LabelSettings_3uige"]
 font_size = 20
 
-[node name="Connection" type="Control" node_paths=PackedStringArray("addressField", "hostnameField")]
+[node name="Connection" type="Control" node_paths=PackedStringArray("addressField", "hostnameField", "menuNode", "noConnPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -415.0
+offset_right = -416.0
 offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5ve1h")
 script = ExtResource("1_yoqkt")
-addressField = NodePath("AgentAddress")
-hostnameField = NodePath("AgentHostname")
+addressField = NodePath("Menu/AgentAddress")
+hostnameField = NodePath("Menu/AgentHostname")
+menuNode = NodePath("Menu")
+noConnPanel = NodePath("NoConnection")
 
-[node name="AgentIcon" type="TextureRect" parent="."]
+[node name="Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AgentIcon" type="TextureRect" parent="Menu"]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 16.0
@@ -31,7 +39,7 @@ texture = ExtResource("1_fec58")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ConnectedLabel" type="Label" parent="."]
+[node name="ConnectedLabel" type="Label" parent="Menu"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 16.0
@@ -40,16 +48,16 @@ offset_bottom = 39.0
 text = "Connected To:"
 vertical_alignment = 1
 
-[node name="AgentAddress" type="Label" parent="."]
+[node name="AgentAddress" type="Label" parent="Menu"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 68.0
-offset_right = 416.0
+offset_right = 420.0
 offset_bottom = 91.0
 text = "FF:FF:00:00:FF:FF"
 vertical_alignment = 1
 
-[node name="AgentHostname" type="Label" parent="."]
+[node name="AgentHostname" type="Label" parent="Menu"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 40.0
@@ -59,7 +67,7 @@ text = "RSM_AGENT_FFFFFFFF"
 label_settings = SubResource("LabelSettings_3uige")
 vertical_alignment = 1
 
-[node name="Probe" type="Button" parent="."]
+[node name="Probe" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 128.0
@@ -68,7 +76,7 @@ offset_bottom = 159.0
 text = "Probe System"
 alignment = 0
 
-[node name="Filesystem" type="Button" parent="."]
+[node name="Filesystem" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 168.0
@@ -77,7 +85,7 @@ offset_bottom = 199.0
 text = "View Filesystem"
 alignment = 0
 
-[node name="Scan" type="Button" parent="."]
+[node name="Scan" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 208.0
@@ -87,7 +95,7 @@ text = "Scan Vicinity
 "
 alignment = 0
 
-[node name="Disconnect" type="Button" parent="."]
+[node name="Disconnect" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 392.0
@@ -97,4 +105,21 @@ text = "Disconnect
 "
 alignment = 0
 
-[connection signal="pressed" from="Filesystem" to="." method="_on_filesystem_pressed"]
+[node name="NoConnection" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 728.0
+offset_bottom = 248.0
+
+[node name="Label" type="Label" parent="NoConnection"]
+layout_mode = 0
+offset_right = 728.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.568627)
+theme_override_font_sizes/font_size = 21
+text = "No Connection Active"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Menu/Probe" to="." method="_on_probe_pressed"]
+[connection signal="pressed" from="Menu/Filesystem" to="." method="_on_filesystem_pressed"]

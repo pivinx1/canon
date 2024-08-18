@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8tvvb5x4hjp"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_xks62"]
+
+[node name="Port" type="ColorRect"]
+custom_minimum_size = Vector2(424, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -728.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xks62")
+color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[node name="PortNum" type="Label" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 157.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 32
+text = "22"
+vertical_alignment = 1
+
+[node name="PortStatus" type="Label" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_right = 424.0
+offset_bottom = 19.0
+text = "Unknown"
+horizontal_alignment = 2
+
+[node name="ServiceName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 19.0
+offset_right = 421.0
+offset_bottom = 38.0
+text = "Agent Communications Port"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PortNum_Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 58.0
+offset_bottom = 23.0
+text = "Port#:"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,11 @@
+{
+	"22": "OpenSSH Shell",
+	"25": "SMTP Mail Agent",
+	"69": "TFTP Server",
+	"121": "Agent Communications Port",
+	"337": "Sanctifier Debug Server",
+	"1433": "SQL Database",
+	"2377": "Docker Swarm Communications",
+	"3381": "Trader Interface Server",
+	"5006": "ctOS Agent Interface",
+}

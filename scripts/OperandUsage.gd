@@ -10,6 +10,5 @@ func _process(delta):
 	var operandUsage: int = playerdata.playerStats["operandUsage"]
 	var percentageEx: int = ex.parse("(x / y) * 100", ["x", "y"])
 	var percentage = ex.execute([operandUsage, operandPool])
-	
-	progressbar.value = ceil(percentage)
+	progressbar.value = percentage
 	usageLabel.set_text("{usage}/{pool} Operands".format({"usage": str(operandUsage), "pool": str(operandPool)}))

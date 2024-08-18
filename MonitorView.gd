@@ -35,6 +35,7 @@ func _on_connection_view_pressed():
 	var connectionInstance: Node = packedConnection.instantiate()
 	viewport.add_child(connectionInstance)
 	connectionInstance.connect("openFsWindow", _on_open_fs_window)
+	connectionInstance.connect("probe", _on_probe)
 
 func _on_open_file_reader(fname: String, fcontent: String):
 	clearViewport()
@@ -52,6 +53,12 @@ func _on_open_fs_window():
 	viewport.add_child(fsViewerInstance)
 	fsViewerInstance.connect("back", _on_connection_view_pressed)
 	fsViewerInstance.connect("openFileReader", _on_open_file_reader)
+	
+func _on_probe():
+	clearViewport()
+	var packedProbe: PackedScene = preload("res://prefab/ports.tscn")
+	var probeInstance: Node = packedProbe.instantiate()
+	viewport.add_child(probeInstance)
 
 func clearViewport():
 	var children: Array[Node] = viewport.get_children()

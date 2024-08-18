@@ -1,6 +1,7 @@
 extends Node
 
 var files = globaldata.loadFiles()
+var hardAgents = globaldata.loadHardAgents()
 
 var agentRegistry: Dictionary = {
 	
@@ -8,7 +9,11 @@ var agentRegistry: Dictionary = {
 
 var agentRegistryEntryPrefab = {
 	"hostname": "HOSTNAME",
-	"ports": [],
+	"ports": {
+		"22": "open",
+		"69": "open",
+		"121": "open"
+	},
 	"filesystem": {
 			"home": {
 				
@@ -29,7 +34,12 @@ var agentRegistryEntryPrefab = {
 
 var sanctifierRegistryEntryPrefab = {
 	"hostname": "HOSTNAME",
-	"ports": [],
+	"ports": {
+		"22": "filtered", 
+		"25": "open", 
+		"69": "filtered", 
+		"337": "filtered"
+		},
 	"filesystem": {
 			"home": {
 				
@@ -48,15 +58,15 @@ var sanctifierRegistryEntryPrefab = {
 	}
 }
 
-func registerAgent(type: String, hostname: String, address: String, ports: Array[int] = [22, 21, 121]):
+func registerAgent(type: String, hostname: String, address: String, ports: Dictionary = {22: "open", 69: "open", 121: "open"}):
 	match type:
-		"agent":
-			var entry = agentRegistryEntryPrefab
+		"sanctifier":
+			var entry = sanctifierRegistryEntryPrefab.duplicate()
 			entry["hostname"] = hostname
 			entry["ports"] = ports
 			agentRegistry[address] = entry
-		"sanctifier":
-			var entry = sanctifierRegistryEntryPrefab
+		_:
+			var entry = agentRegistryEntryPrefab.duplicate()
 			entry["hostname"] = hostname
 			entry["ports"] = ports
 			agentRegistry[address] = entry
