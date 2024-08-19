@@ -1,11 +1,8 @@
 extends Panel
 
+const ramFreePrefab: String = "%s MqB free"
+@onready var ramfreelabel: Label = $RAMFree
+var playerStats: Dictionary = playerdata.playerStats
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	ramfreelabel.set_text(ramFreePrefab % str(playerStats["ramPool"] - playerStats["ramUsage"]))

@@ -19,7 +19,10 @@ func _process(delta):
 	
 func scanFilesystem():
 	tree.create_item()
-	populate_tree(tree, connectionFs)
+	if agentregistry.agentRegistry[globaldata.connectionDict["address"]]["ports"]["69"] == "filtered":
+		populate_tree(tree, connectionFs["home"])
+	else:
+		populate_tree(tree, connectionFs)
 	
 func populate_tree(tree: Tree, dictionary: Dictionary, parent: TreeItem = null) -> void:
 	for key in dictionary.keys():

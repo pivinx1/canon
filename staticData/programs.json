@@ -1,0 +1,7 @@
+{
+	"portanalyzer": {
+		"ramUsage": 384,
+		"operandUsage": 15,
+		"path": "res://prefab/programs/portAnalyzer.tscn"
+	}
+}

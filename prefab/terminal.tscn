@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0mpgb5epdl6q"]
+[gd_scene load_steps=5 format=3 uid="uid://d0mpgb5epdl6q"]
 
 [ext_resource type="Script" path="res://scripts/terminal/terminal.gd" id="1_bxis3"]
 [ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_wmp3o"]
+[ext_resource type="Script" path="res://scripts/terminal/ScrollContainer.gd" id="3_lls1x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnlvt"]
 font_size = 14
@@ -18,7 +19,7 @@ grow_vertical = 2
 theme = ExtResource("1_wmp3o")
 script = ExtResource("1_bxis3")
 entry_field = NodePath("EntryField")
-echo_box = NodePath("Echo")
+echo_box = NodePath("ScrollContainer/Echo")
 
 [node name="EntryField" type="LineEdit" parent="."]
 layout_mode = 0
@@ -29,10 +30,16 @@ placeholder_text = "Enter a command..."
 caret_blink = true
 caret_mid_grapheme = true
 
-[node name="Echo" type="Label" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_right = 731.0
-offset_bottom = 397.0
+offset_bottom = 389.0
+follow_focus = true
+horizontal_scroll_mode = 0
+script = ExtResource("3_lls1x")
+
+[node name="Echo" type="Label" parent="ScrollContainer"]
+layout_mode = 2
 label_settings = SubResource("LabelSettings_lnlvt")
 
 [connection signal="text_submitted" from="EntryField" to="." method="_on_entry_field_text_submitted"]

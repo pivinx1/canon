@@ -1,13 +1,17 @@
 extends Panel
 
 @onready var viewport: Node = $Viewport
+@export var ramViewContainer: VBoxContainer
+
 var emailDict = globaldata.emailDict
+var programs = globaldata.loadPrograms()
 
 func _on_terminal_button_pressed():
 	clearViewport()
 	var packedTerminal: PackedScene = preload("res://prefab/terminal.tscn")
 	var terminalInstance: Node = packedTerminal.instantiate()
 	viewport.add_child(terminalInstance)
+	terminalInstance.connect("spawnProgram", _on_spawn_program)
 
 
 func _on_open_mail_view_pressed():
@@ -59,6 +63,17 @@ func _on_probe():
 	var packedProbe: PackedScene = preload("res://prefab/ports.tscn")
 	var probeInstance: Node = packedProbe.instantiate()
 	viewport.add_child(probeInstance)
+
+func _on_spawn_program(program: String):
+	var packedProgram: PackedScene = load(programs[program]["path"])
+	var programInstance: Node = packedProgram.instantiate()
+	ramViewContainer.add_child(programInstance)
+	programInstance.connect("programQuit", _on_program_quit.bind(programInstance, program))
+
+func _on_program_quit(programnode: Node, programname: String):
+	playerdata.playerStats["ramUsage"] -= programs[programname]["ramUsage"]
+	playerdata.playerStats["operandUsage"] -= programs[programname]["operandUsage"]
+	programnode.queue_free()
 
 func clearViewport():
 	var children: Array[Node] = viewport.get_children()

@@ -38,7 +38,7 @@ font_size = 8
 line_spacing = 0.0
 font_size = 8
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("sfxPlayer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,8 +47,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rotnm")
 script = ExtResource("1_2eukn")
+sfxPlayer = NodePath("SFXPlayer")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
 script = ExtResource("2_3awj7")
 
@@ -138,7 +141,6 @@ offset_top = 15.0
 offset_right = 165.0
 offset_bottom = 30.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_r4d0o")
-value = 25.0
 show_percentage = false
 
 [node name="Usage" type="Label" parent="OperandUsage"]
@@ -189,6 +191,12 @@ label_settings = SubResource("LabelSettings_axud6")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="VBoxContainer" type="VBoxContainer" parent="RAMViewer"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 165.0
+offset_bottom = 416.0
+
 [node name="SectorMap" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 2.0
@@ -205,13 +213,14 @@ text = "Sector Map"
 label_settings = SubResource("LabelSettings_kl6oq")
 vertical_alignment = 1
 
-[node name="MonitorView" type="Panel" parent="."]
+[node name="MonitorView" type="Panel" parent="." node_paths=PackedStringArray("ramViewContainer")]
 layout_mode = 0
 offset_left = 169.0
 offset_top = 28.0
 offset_right = 900.0
 offset_bottom = 474.0
 script = ExtResource("7_jqy2d")
+ramViewContainer = NodePath("../RAMViewer/VBoxContainer")
 
 [node name="Viewport" type="Control" parent="MonitorView"]
 anchors_preset = 0
@@ -251,7 +260,7 @@ offset_right = 246.0
 offset_bottom = 253.0
 wrap_mode = 1
 
-[connection signal="play" from="." to="AudioStreamPlayer" method="_play"]
+[connection signal="play" from="." to="BGMPlayer" method="_play"]
 [connection signal="exit" from="Toolbar" to="." method="_on_toolbar_exit"]
 [connection signal="pressed" from="Toolbar/ExitGame" to="Toolbar" method="_on_exit_game_pressed"]
 [connection signal="pressed" from="Toolbar/OpenMailView" to="MonitorView" method="_on_open_mail_view_pressed"]

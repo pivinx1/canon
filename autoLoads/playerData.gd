@@ -18,7 +18,7 @@ var playerPorts: Dictionary = {
 
 var playerStats: Dictionary = {
 	"operandPool": 50,
-	"operandUsage": 25,
+	"operandUsage": 0,
 	"ramPool": 768,	#	1 MqB
 	"ramUsage": 0
 }

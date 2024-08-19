@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv2s7gmmavs3n"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_hvenk"]
+[ext_resource type="Script" path="res://scripts/programs/portAnalyzer.gd" id="2_5kcl5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h3ne"]
+bg_color = Color(0, 0, 0, 0.262745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icjre"]
+bg_color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[node name="PortAnalyzer" type="Control"]
+custom_minimum_size = Vector2(165, 168)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -987.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hvenk")
+script = ExtResource("2_5kcl5")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 165.0
+offset_bottom = 168.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h3ne")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 165.0
+offset_bottom = 13.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_icjre")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 10
+text = "Port State Analyzer"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

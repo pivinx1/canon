@@ -61,8 +61,11 @@ offset_left = 16.0
 offset_top = 96.0
 offset_right = 728.0
 offset_bottom = 408.0
+horizontal_scroll_mode = 0
 
 [node name="Label" type="Label" parent="ScrollContainer"]
+custom_minimum_size = Vector2(720, 312)
 layout_mode = 2
+autowrap_mode = 3
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

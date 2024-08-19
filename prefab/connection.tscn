@@ -7,7 +7,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_3uige"]
 font_size = 20
 
-[node name="Connection" type="Control" node_paths=PackedStringArray("addressField", "hostnameField", "menuNode", "noConnPanel")]
+[node name="Connection" type="Control" node_paths=PackedStringArray("probeButton", "filesystemButton", "disconnectButton", "addressField", "hostnameField", "menuNode", "noConnPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5ve1h")
 script = ExtResource("1_yoqkt")
+probeButton = NodePath("Menu/Probe")
+filesystemButton = NodePath("Menu/Filesystem")
+disconnectButton = NodePath("Menu/Disconnect")
 addressField = NodePath("Menu/AgentAddress")
 hostnameField = NodePath("Menu/AgentHostname")
 menuNode = NodePath("Menu")
@@ -123,3 +126,4 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Menu/Probe" to="." method="_on_probe_pressed"]
 [connection signal="pressed" from="Menu/Filesystem" to="." method="_on_filesystem_pressed"]
+[connection signal="pressed" from="Menu/Disconnect" to="." method="_disconnect"]

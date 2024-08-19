@@ -5,23 +5,28 @@ var rng = RandomNumberGenerator.new()
 var fileRegistry: String = "res://staticData/files.json"
 var portRegistry: String = "res://staticData/services.json"
 var hardAgentRegistry: String = "res://staticData/predefinedNodes.json"
+var programRegistry: String = "res://staticData/programs.json"
 var files: Dictionary = loadFiles()
 
 var currentSector: String = "reversetower"
 
 var emailDict = {
-	"test": {
+	"intro": {
 		"sender": "Eosphorous",
-		"subject": "Test message",
-		"content": "Good day,\n This is a test message.\n You may disregard it.",
+		"subject": "Welcome",
+		"content": """
+		Welcome, new Sanctifier.\n
+		I am Eosphorous, and as a Sanctifier and their leader, my task is to maintain stability throughout Magrasea.\n
+		As a Sanctifier, Greater or not, your job is to keep the sector clean of Irregular Agents, and as of recently, Entropics. However,
+		the Entropic menace is currently being dealt with by one of your fellow Sanctifiers, Hesperus, so that is not relevant for now.\n
+		As a form of training, my first order for you is to head to the Rossum sector.\n
+		Do as I said and return to me once you are ready to continue.
+		""",
 		"attachments": {},
-		"isRead": false
-	},
-	"anothertest": {
-		"sender": "Hesperus",
-		"subject": "Another test message",
-		"content": "Good day,\n This is another message. Eosphorous told me to send it to you, so here you are.\n You may disregard it.",
-		"attachments": {},
+		"objectives": {
+			"connect_toSector": "rossum"
+		},
+		"nextmission": "firstmission",
 		"isRead": false
 	}
 }
@@ -121,4 +126,7 @@ func loadPorts():
 	return loadJSON(portRegistry)
 
 func loadHardAgents():
-	return loadJSON(hardAgentRegistry) 
+	return loadJSON(hardAgentRegistry)
+
+func loadPrograms():
+	return loadJSON(programRegistry)
