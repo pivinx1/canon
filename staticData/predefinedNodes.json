@@ -36,5 +36,16 @@
 			"2377": "filtered",
 			"5006": "filtered"
 		}
+	},
+	"training_agent": {
+		"type": "agent",
+		"name": "RTOWER_TEST_AGENT",
+		"sector": "rossum",
+		"address": "31:2A:AA:F1:4C:1E",
+		"ports": {
+			"22": "closed",
+			"69": "open",
+			"121": "open"
+		}
 	}
 }
