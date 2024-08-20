@@ -68,4 +68,22 @@ custom_minimum_size = Vector2(720, 312)
 layout_mode = 2
 autowrap_mode = 3
 
+[node name="Reply" type="Button" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 48.0
+offset_right = 728.0
+offset_bottom = 75.0
+text = "Reply"
+alignment = 2
+
+[node name="Attachments" type="Button" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 48.0
+offset_right = 627.0
+offset_bottom = 75.0
+text = "Attachments"
+alignment = 2
+
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
