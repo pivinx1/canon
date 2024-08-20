@@ -9,7 +9,8 @@
 			"69": "filtered",
 			"121": "open",
 			"3381": "open"
-		}
+		},
+		"filesystem": {}
 	}, 
 	"faith": {
 		"type": "sanctifier",
@@ -21,7 +22,8 @@
 			"69": "open",
 			"337": "open",
 			"1433": "open"
-		}
+		},
+		"filesystem": {}
 	},
 	"turing": {
 		"type": "admin",
@@ -35,17 +37,23 @@
 			"1433": "closed",
 			"2377": "filtered",
 			"5006": "filtered"
-		}
+		},
+		"filesystem": {}
 	},
 	"training_agent": {
 		"type": "agent",
-		"name": "RTOWER_TEST_AGENT",
+		"name": "TEST_AGENT",
 		"sector": "rossum",
 		"address": "31:2A:AA:F1:4C:1E",
 		"ports": {
 			"22": "closed",
-			"69": "open",
+			"69": "filtered",
 			"121": "open"
+		},
+		"filesystem": {
+			"home": {
+				"DOWNLOAD_ME": "01100010001000001001000001010111"
+			}
 		}
 	}
 }

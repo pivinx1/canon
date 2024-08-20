@@ -14,6 +14,8 @@ func _process(delta):
 	pass
 
 func _refreshMap():
+	for node in nodegrid.get_children():
+		node.queue_free()
 	for agent in agentregistry.agentRegistry:
 		if agentregistry.agentRegistry[agent]["sector"] != globaldata.currentSector:
 			pass
@@ -23,7 +25,7 @@ func _refreshMap():
 			node.name = agent.replace("_", ":")
 			node.tooltip_text = tooltipPrefab.format({"hostname": agentregistry.agentRegistry[agent]["hostname"], 
 												 "address": agent})
-			node.connect("pressed", _connectTo(node.name))
+			node.connect("pressed", _connectTo.bind(node.name))
 
 func _connectTo(addr: String):
 	var connection = globaldata.connectionDict
@@ -31,7 +33,7 @@ func _connectTo(addr: String):
 	connection["address"] = addr.replace("_", ":")
 	connection["filesystem"] = agentregistry.agentRegistry[addr.replace("_", ":")]["filesystem"]
 	connection["ports"] = {}
-	for port in agentregistry.agentRegistry[addr]["ports"]:
+	for port in agentregistry.agentRegistry[addr.replace("_", ":")]["ports"]:
 		connection["ports"][port] = "unknown"
 
 

@@ -87,7 +87,7 @@ func _on_reply(idx: String):
 	pass
 
 func _on_refreshMap():
-	pass
+	refreshMap.emit()
 
 func clearViewport():
 	var children: Array[Node] = viewport.get_children()

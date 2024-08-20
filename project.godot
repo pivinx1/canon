@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 globaldata="*res://autoLoads/globaldata.gd"
 playerdata="*res://autoLoads/playerData.gd"
 agentregistry="*res://autoLoads/agentRegistry.gd"
+missions="*res://staticData/missions.gd"
 
 [display]
 

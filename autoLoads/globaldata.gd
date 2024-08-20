@@ -115,3 +115,6 @@ func loadHardAgents():
 
 func loadPrograms():
 	return loadJSON(programRegistry)
+
+func loadMissions():
+	return loadJSON()
