@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vcmcd0tqqxai"]
+
+[ext_resource type="Script" path="res://scripts/maps/sectorNode.gd" id="1_y43gi"]
+[ext_resource type="Texture2D" uid="uid://ds4mjmmffb72g" path="res://textures/UIComponents/NodeCircle.png" id="2_yo8ou"]
+
+[node name="SectorNode" type="TextureButton"]
+modulate = Color(0.355537, 0.690213, 1, 1)
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1120.0
+offset_bottom = -616.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_yo8ou")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_y43gi")
+
+[connection signal="pressed" from="." to="." method="_on_texture_button_pressed"]

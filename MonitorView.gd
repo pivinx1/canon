@@ -1,5 +1,7 @@
 extends Panel
 
+signal refreshMap
+
 @onready var viewport: Node = $Viewport
 @export var ramViewContainer: VBoxContainer
 
@@ -12,6 +14,7 @@ func _on_terminal_button_pressed():
 	var terminalInstance: Node = packedTerminal.instantiate()
 	viewport.add_child(terminalInstance)
 	terminalInstance.connect("spawnProgram", _on_spawn_program)
+	terminalInstance.connect("refreshMap", _on_refreshMap)
 
 
 func _on_open_mail_view_pressed():
@@ -81,6 +84,9 @@ func _on_attachments(idx: String):
 	pass
 
 func _on_reply(idx: String):
+	pass
+
+func _on_refreshMap():
 	pass
 
 func clearViewport():

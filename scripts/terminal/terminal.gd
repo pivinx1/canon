@@ -1,6 +1,7 @@
 extends Control
 
 signal spawnProgram(program: String)
+signal refreshMap
 
 var rng = RandomNumberGenerator.new()
 
@@ -31,7 +32,7 @@ func handleCommand(command: String):
 			var agentArray: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
 			globaldata.connectionDict["hostname"] = agentArray[0]
 			globaldata.connectionDict["address"] = agentArray[1]
-			agentregistry.registerAgent("agent", agentArray[0], agentArray[1])
+			agentregistry.registerAgent("agent", agentArray[0], agentArray[1], globaldata.currentSector)
 			print(agentregistry.agentRegistry[agentArray[1]]["ports"])
 			globaldata.connectionDict["ports"] = agentregistry.agentRegistry[agentArray[1]]["ports"]
 			echo("Found Agent " + agentArray[0] + " with address " + agentArray[1])
@@ -89,22 +90,27 @@ func handleCommand(command: String):
 
 func scanVicinity():
 	for i in 5:
-					rng.randomize()
-					match rng.randi_range(0, 1):	# 0 hardcoded, 1 generated
-						0:
-							var agentKeys = agentregistry.hardAgents.keys()
-							var chosenAgent = agentregistry.hardAgents[agentKeys.pick_random()]
-							var agentHostname = globaldata.generateHostname(chosenAgent["sector"], chosenAgent["type"], chosenAgent["name"])
-							if not agentregistry.agentRegistry.has(chosenAgent["address"]):
-								agentregistry.registerAgent(chosenAgent["type"], 
-								agentHostname,
-								chosenAgent["address"],
-								chosenAgent["ports"])
-								echo(output.format({"hostname": agentHostname,
-												"address": chosenAgent["address"]}))
-							else:
-								continue
-						1:
-							var agent: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
-							agentregistry.registerAgent("agent", agent[0], agent[1])
-							echo(output.format({"hostname": agent[0], "address": agent[1]}))
+		rng.randomize()
+		match rng.randi_range(0, 1):	# 0 hardcoded, 1 generated
+			0:
+				var agentKeys = agentregistry.hardAgents.keys()
+				var chosenAgent = agentregistry.hardAgents[agentKeys.pick_random()]
+				var agentHostname = globaldata.generateHostname(chosenAgent["sector"], chosenAgent["type"], chosenAgent["name"])
+				if globaldata.currentSector != chosenAgent["sector"]:
+					continue
+				else:
+					if not agentregistry.agentRegistry.has(chosenAgent["address"]):
+						agentregistry.registerAgent(chosenAgent["type"], 
+													agentHostname,
+													chosenAgent["address"],
+													chosenAgent["sector"],
+													chosenAgent["ports"])
+						echo(output.format({"hostname": agentHostname,
+											"address": chosenAgent["address"]}))
+					else:
+						continue
+			1:
+				var agent: Array = globaldata.generateAgent(globaldata.currentSector, "generic")
+				agentregistry.registerAgent("agent", agent[0], agent[1], globaldata.currentSector)
+				echo(output.format({"hostname": agent[0], "address": agent[1]}))
+	refreshMap.emit()

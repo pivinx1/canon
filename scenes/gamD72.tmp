@@ -281,10 +281,8 @@ offset_bottom = 253.0
 wrap_mode = 1
 
 [connection signal="play" from="." to="BGMPlayer" method="_play"]
-[connection signal="refreshSector" from="ServerMap" to="SectorMap" method="_on_server_map_refresh_sector"]
 [connection signal="exit" from="Toolbar" to="." method="_on_toolbar_exit"]
 [connection signal="pressed" from="Toolbar/ExitGame" to="Toolbar" method="_on_exit_game_pressed"]
 [connection signal="pressed" from="Toolbar/OpenMailView" to="MonitorView" method="_on_open_mail_view_pressed"]
 [connection signal="pressed" from="Toolbar/OpenTerminal" to="MonitorView" method="_on_terminal_button_pressed"]
 [connection signal="pressed" from="Toolbar/ConnectionView" to="MonitorView" method="_on_connection_view_pressed"]
-[connection signal="refreshMap" from="MonitorView" to="SectorMap" method="_on_monitor_view_refresh_map"]

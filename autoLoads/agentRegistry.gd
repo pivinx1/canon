@@ -9,6 +9,7 @@ var agentRegistry: Dictionary = {
 
 var agentRegistryEntryPrefab = {
 	"hostname": "HOSTNAME",
+	"sector": "",
 	"ports": {
 		"22": "open",
 		"69": "open",
@@ -34,6 +35,7 @@ var agentRegistryEntryPrefab = {
 
 var sanctifierRegistryEntryPrefab = {
 	"hostname": "HOSTNAME",
+	"sector": "",
 	"ports": {
 		"22": "filtered", 
 		"25": "open", 
@@ -58,15 +60,17 @@ var sanctifierRegistryEntryPrefab = {
 	}
 }
 
-func registerAgent(type: String, hostname: String, address: String, ports: Dictionary = {22: "open", 69: "open", 121: "open"}):
+func registerAgent(type: String, hostname: String, address: String, sector: String, ports: Dictionary = {22: "open", 69: "open", 121: "open"}):
 	match type:
 		"sanctifier":
 			var entry = sanctifierRegistryEntryPrefab.duplicate()
 			entry["hostname"] = hostname
 			entry["ports"] = ports
+			entry["sector"] = sector
 			agentRegistry[address] = entry
 		_:
 			var entry = agentRegistryEntryPrefab.duplicate()
 			entry["hostname"] = hostname
 			entry["ports"] = ports
+			entry["sector"] = sector
 			agentRegistry[address] = entry
