@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_dbc5b")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 736.0
 offset_bottom = 40.0
 

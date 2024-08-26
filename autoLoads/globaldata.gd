@@ -8,16 +8,26 @@ var hardAgentRegistry: String = "res://staticData/predefinedNodes.json"
 var programRegistry: String = "res://staticData/programs.json"
 var files: Dictionary = loadFiles()
 
+var lastOpenedEmail: String
+
 var currentSector: String = "reversetower"
 
 var emailDict = {
 
 }
 
+var activeMission = {
+	
+}
+
+var activeEmailDict = {
+	
+}
+
 var connectionDict: Dictionary = {
 }
 
-var playerKnownSectors: Array[String] = ["reversetower", "rossum"]
+var playerKnownSectors: Array[String] = ["reversetower"]
 
 const musicDict: Dictionary = {
 	"postCreation": "res://sounds/bgm/SecondThoughts.ogg",
@@ -115,6 +125,3 @@ func loadHardAgents():
 
 func loadPrograms():
 	return loadJSON(programRegistry)
-
-func loadMissions():
-	return loadJSON()

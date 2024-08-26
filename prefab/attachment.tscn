@@ -13,6 +13,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_whug2")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 32.0
+text = "TYPE: CONTENT"
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 8.0
@@ -22,12 +31,3 @@ offset_bottom = 34.0
 theme_override_font_sizes/font_size = 15
 text = "+"
 clip_text = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 32.0
-text = "TYPE: CONTENT"
-vertical_alignment = 1

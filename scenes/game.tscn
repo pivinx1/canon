@@ -281,6 +281,7 @@ offset_bottom = 253.0
 wrap_mode = 1
 
 [connection signal="play" from="." to="BGMPlayer" method="_play"]
+[connection signal="connectedToSector" from="ServerMap" to="." method="_on_server_map_connected_to_sector"]
 [connection signal="refreshSector" from="ServerMap" to="SectorMap" method="_on_server_map_refresh_sector"]
 [connection signal="exit" from="Toolbar" to="." method="_on_toolbar_exit"]
 [connection signal="pressed" from="Toolbar/ExitGame" to="Toolbar" method="_on_exit_game_pressed"]

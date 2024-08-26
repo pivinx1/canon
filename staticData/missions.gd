@@ -1,7 +1,7 @@
 extends Node
 
 var missions: Dictionary = {
-    "intro": {
+	"intro": {
 		"sender": "Eosphorous",
 		"subject": "Welcome",
 		"content": """
@@ -10,7 +10,8 @@ var missions: Dictionary = {
 		As a Sanctifier, Greater or not, your job is to keep the sector clean of Irregular Agents, and as of recently, Entropics. However,
 		the Entropic menace is currently being dealt with by one of your fellow Sanctifiers, Hesperus, so that is not relevant for now.\n
 		As a form of training, my first order for you is to head to the Rossum sector by using your Server Map. 
-		I have attached a link to the sector to this message, you can access it using the Attachments button.\n
+		I have attached a link to the sector to this message, you can access it using the Attachments button. 
+		Always remember to check the attachments, they frequently contain information or links that may be useful to your current mission.\n
 		Do as I said and return to me once you are ready to continue.
 		""",
 		"attachments": {
@@ -20,18 +21,18 @@ var missions: Dictionary = {
 			}
 		},
 		"objectives": {
-			"connect_toSector": "rossum"
+			"connect_toSector": [false, "rossum"]	# first object is always a bool that tells if the task was completed, rest are parameters
 		},
-		"nextmission": "firstmission",
+		"nextmission": "training",
 		"isRead": false
 	},
-    "training": {
-        "sender": "Eosphorous",
+	"training": {
+		"sender": "Eosphorous",
 		"subject": "Training",
 		"content": """
 		Excellent work. A Sanctifier of your caliber should have been able to do that easily, and I am not disappointed.\n
 		Anyways, I have set up a target Agent for you inside the sector, while you were there, and left a file in it's /home directory.
-		As a test, you must find it by scanning the sector in search of it
+		As a test, you must find it by scanning the sector in search of it.
 		Download it, and return to me.
 		""",
 		"attachments": {
@@ -49,10 +50,10 @@ var missions: Dictionary = {
 				"""
 			},
 			"objectives": {
-				"download": ["home/DOWNLOAD_ME", "RTOWER_TEST_AGENT"]
+				"download": [false, "home/DOWNLOAD_ME", "RTOWER_TEST_AGENT"]
 			},
 			"nextmission": "tools",
 			"isRead": false
 		}
-    }
+	}
 }

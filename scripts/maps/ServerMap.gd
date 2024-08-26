@@ -1,6 +1,7 @@
 extends Panel
 
 signal refreshSector
+signal connectedToSector(sector: String)
 
 @onready var nodeCircle: PackedScene = preload("res://prefab/sectorNode.tscn")
 @onready var grid: GridContainer = $GridContainer
@@ -18,10 +19,11 @@ func _refreshMap():
 		var sectorCircle: TextureButton = nodeCircle.instantiate()
 		grid.add_child(sectorCircle)
 		sectorCircle.set_name(sector)
-		sectorCircle.set_tooltip_text(sector)
+		sectorCircle.set_tooltip_text(sector.capitalize())
 		sectorCircle.connect("pressed", _gotoSector.bind(sector))
 
 func _gotoSector(sector: String):
 	globaldata.currentSector = sector
 	sectorLogoBg.texture = sectorLogos[sector]
 	refreshSector.emit()
+	connectedToSector.emit(sector)

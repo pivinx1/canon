@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcry0ej0e42qg"]
+
+[ext_resource type="Theme" uid="uid://yihqjdsgadyv" path="res://theme.tres" id="1_1hpu5"]
+[ext_resource type="Script" path="res://scripts/email/additionalInfoEntryField.gd" id="2_ubijo"]
+
+[node name="AdditionalInfoEntryField" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1hpu5")
+script = ExtResource("2_ubijo")
+
+[node name="Add" type="Button" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "+"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 48.0
+offset_right = 424.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 48.0
+offset_right = 424.0
+offset_bottom = 40.0
+
+[node name="Submit" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 440.0
+offset_right = 512.0
+offset_bottom = 40.0
+text = "Submit"
+alignment = 2
+
+[connection signal="pressed" from="Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]

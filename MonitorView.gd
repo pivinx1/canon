@@ -34,8 +34,9 @@ func _on_mail_open(idx):
 	readerInstance.get_child(1).set_text("Sender: %s" % emailDict[idx]["sender"])
 	readerInstance.get_child(2).set_text("Subject: %s" % emailDict[idx]["subject"])
 	readerInstance.get_child(3).get_child(0).set_text(emailDict[idx]["content"])
-	readerInstance.get_child(4).connect("pressed", _on_reply(idx))
-	readerInstance.get_child(5).connect("pressed", _on_attachments(idx))
+	readerInstance.get_child(4).connect("pressed", _on_reply.bind(idx))
+	readerInstance.get_child(5).connect("pressed", _on_attachments.bind(idx))
+	globaldata.activeEmailDict = emailDict[idx]
 	emailDict[idx]["isRead"] = true
 
 func _on_connection_view_pressed():
@@ -81,10 +82,17 @@ func _on_program_quit(programnode: Node, programname: String):
 	programnode.queue_free()
 	
 func _on_attachments(idx: String):
-	pass
+	clearViewport()
+	var packedAttachmentList: PackedScene = load("res://prefab/mailAttachments.tscn")
+	var attachmentListInstance: Node = packedAttachmentList.instantiate()
+	attachmentListInstance.get_child(0).get_child(1).connect("pressed", _on_mail_open.bind(idx))
+	add_child(attachmentListInstance)
 
 func _on_reply(idx: String):
-	pass
+	clearViewport()
+	var packedReply: PackedScene = load("res://prefab/mailReply.tscn")
+	var replyInstance: Node = packedReply.instantiate()
+	
 
 func _on_refreshMap():
 	refreshMap.emit()
